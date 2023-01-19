@@ -27,5 +27,5 @@ app.get('/food',(req,res)=>{
     res.json({foods : "pizza,hamburger"})
 })
 app.use((req,res)=>{
-    res.status(404).render('404');
+    res.status(404).send('404');
 });
