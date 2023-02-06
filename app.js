@@ -6,7 +6,7 @@ const apiRouter = require('./routes/api');
 const mongoose = require('mongoose');
 const dbURL = 'mongodb+srv://yaewint:yewintaung@nodejsapi.usregc0.mongodb.net/signup?retryWrites=true&w=majority';
 
-mongoose.connect(dbURL,{useNewUrlParser : true , useUnifiedTopology : true })
+mongoose.connect(dbURL,{useNewUrlParser : true , useUnifiedTopology : true ,autoIndex:true})
         .then((result)=>{
             app.listen(port,()=>{
                 console.log(`server is running on ${port} `);
@@ -19,6 +19,7 @@ mongoose.connect(dbURL,{useNewUrlParser : true , useUnifiedTopology : true })
 let port = process.env.PORT;
 
 app.use(express.urlencoded());
+app.use(express.json());
 app.use('/api',apiRouter);
 app.get('/',(req,res)=>{
     res.json({message: "wellcome to my node js api"})
